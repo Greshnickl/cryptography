@@ -6,9 +6,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        System.out.println("Выберите способ ввода данных:");
-        System.out.println("1 - Ввести данные с клавиатуры");
-        System.out.println("2 - Сгенерировать случайные данные");
+        System.out.println("Choose method of input data:");
+        System.out.println("1 - Input from keyboard");
+        System.out.println("2 - Generate random data");
         int choice = scanner.nextInt();
         scanner.nextLine();
 
@@ -16,24 +16,24 @@ public class Main {
         String SBlocksResult;
 
         if (choice == 1) {
-            System.out.println("Введите L(i-1) (32 бита):");
+            System.out.println("Input L(i-1) (32 bits):");
             Li_1 = scanner.nextLine();
             if (!isValidBinary(Li_1, 32)) {
-                System.out.println("Ошибка: L(i-1) должен содержать ровно 32 бита.");
+                System.out.println("Error: L(i-1) must contains 32 bits.");
                 return;
             }
 
-            System.out.println("Введите результат работы S-блоков (32 бита):");
+            System.out.println("Input S-block (32 bits):");
             SBlocksResult = scanner.nextLine();
             if (!isValidBinary(SBlocksResult, 32)) {
-                System.out.println("Ошибка: результат S-блоков должен содержать ровно 32 бита.");
+                System.out.println("Error: S-block must contains 32 bits.");
                 return;
             }
         } else {
             Li_1 = generateRandomBinary(32, random);
             SBlocksResult = generateRandomBinary(32, random);
-            System.out.println("Сгенерированный L(i-1): " + Li_1);
-            System.out.println("Сгенерированный результат S-блоков: " + SBlocksResult);
+            System.out.println("Generated L(i-1): " + Li_1);
+            System.out.println("Generated S-block: " + SBlocksResult);
         }
 
         String Ri = xorBinaryStrings(Li_1, SBlocksResult);

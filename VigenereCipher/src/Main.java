@@ -7,42 +7,42 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Выберите операцию: \n1 - Шифрование \n2 - Дешифрование \n0 - Выход");
+            System.out.println("Choose operation: \n1 - Encrypt \n2 - Decrypt \n0 - Exit");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             if (choice == 0) {
-                System.out.println("Программа завершена.");
+                System.out.println("Exit from program.");
                 break;
             }
 
             if (choice != 1 && choice != 2) {
-                System.out.println("Некорректный выбор. Попробуйте снова.");
+                System.out.println("Wrong input, try again.");
                 continue;
             }
 
             String key;
             while (true) {
-                System.out.println("Введите ключ (длина не менее 7):");
+                System.out.println("Input key(minimum 7 characters):");
                 key = scanner.nextLine().toUpperCase().replaceAll(" ", "");
                 if (key.length() >= 7 && key.matches("[А-Я]+")) {
                     break;
                 }
-                System.out.println("Ключ должен быть длиной не менее 7 символов и содержать только буквы русского алфавита. Попробуйте снова.");
+                System.out.println("The key must be at least 7 characters long and contain only letters of the Russian alphabet. Try again.");
             }
 
-            System.out.println("Введите сообщение:");
+            System.out.println("Input message:");
             String message = scanner.nextLine().toUpperCase().replaceAll(" ", "");
 
             if (!message.matches("[А-Я]+")) {
-                System.out.println("Сообщение должно содержать только буквы русского алфавита. Попробуйте снова.");
+                System.out.println("The message must contain only letters of the Russian alphabet. Try again.");
                 continue;
             }
 
             if (choice == 1) {
-                System.out.println("Зашифрованное сообщение: " + encrypt(message, key));
+                System.out.println("Encrypted message: " + encrypt(message, key));
             } else {
-                System.out.println("Расшифрованное сообщение: " + decrypt(message, key));
+                System.out.println("Decrypted message: " + decrypt(message, key));
             }
         }
     }
